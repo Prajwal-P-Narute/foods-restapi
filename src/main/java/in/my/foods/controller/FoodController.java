@@ -34,8 +34,8 @@ public class FoodController {
 
         }
 
-        FoodResponse resonse = foodService.addFood(request, file);
-        return resonse;
+        FoodResponse response = foodService.addFood(request, file);
+        return response;
     }
 
     @GetMapping
