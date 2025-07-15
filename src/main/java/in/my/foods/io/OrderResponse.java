@@ -3,6 +3,7 @@ package in.my.foods.io;
 import lombok.Builder;
 import lombok.Data;
 
+import java.util.Date;
 import java.util.List;
 
 @Data
@@ -18,4 +19,5 @@ public class OrderResponse {
     private String razorpayOrderId;
     private String orderStatus;
     private List<OrderItem> orderedItems;
+    private Date orderDate;
 }

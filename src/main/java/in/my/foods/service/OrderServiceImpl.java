@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -38,8 +39,7 @@ public class OrderServiceImpl implements OrderService{
     @Override
     public OrderResponse createOrderWithPayment(OrderRequest request) {
         OrderEntity newOrder = convertToEntity(request);
-//        newOrder = orderRepository.save(newOrder);
-
+        newOrder.setOrderDate(new Date());
 //        create razorpay payment order
         try {
             RazorpayClient razorpayClient = new RazorpayClient(RAZORPAY_KEY, RAZORPAY_SECRET);
@@ -122,6 +122,7 @@ public class OrderServiceImpl implements OrderService{
                 .email(newOrder.getEmail())
                 .phoneNumber(newOrder.getPhoneNumber())
                 .orderedItems(newOrder.getOrderedItems())
+                .orderDate(newOrder.getOrderDate())
                 .build();
     }
 
