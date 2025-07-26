@@ -44,6 +44,7 @@ public class FoodServiceImpl implements FoodService{
                     .key(key)
                     .acl("public-read")
                     .contentType(file.getContentType())
+                    .cacheControl("public, max-age=31536000" )
                     .build();
 
             PutObjectResponse response = s3Client.putObject(putObjectRequest, RequestBody.fromBytes(file.getBytes()));
